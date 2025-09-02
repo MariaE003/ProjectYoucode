@@ -55,13 +55,23 @@ int main()
     }
     printf("le factoriele de %d est %d \n",N,F);
 */
-    int N,i,S;
+    //challenge 3
+    /*int N,i,S;
     printf("entrer un nombre :");
     scanf("%d",&N);
     for(i=0;i<=N;i++){
         S+=i;
     }
     printf("la somme est des %d nombre est  : %d ",N,S);
+
+    */
+
+    //challenge 6
+    int N,i;
+    printf("entrer un nombre :");
+    scanf("%d",&N);
+
+
 
 
 
