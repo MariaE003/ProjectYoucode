@@ -35,7 +35,33 @@ int main()
 
     printf("inverse = %d \n",inverse);
     */
-    //challenge 13
+//loops
+
+    //challenge 1 Table de multiplication
+    /*int N,i;
+    printf("entrer un nombre : ");
+    scanf("%d",&N);
+    for(i=0;i<=10;i++){
+        printf("%d * %d = %d \n",N,i,N*i);
+    }
+    */
+    //challenge 2 Favtorielle
+    /*int N,i,F;
+    F=1;
+    printf("entrer un nombre : ");
+    scanf("%d",&N);
+    for(i=1;i<=N;i++){
+            F=F*i;
+    }
+    printf("le factoriele de %d est %d \n",N,F);
+*/
+    int N,i,S;
+    printf("entrer un nombre :");
+    scanf("%d",&N);
+    for(i=0;i<=N;i++){
+        S+=i;
+    }
+    printf("la somme est des %d nombre est  : %d ",N,S);
 
 
 
