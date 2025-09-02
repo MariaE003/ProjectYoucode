@@ -94,15 +94,23 @@ int main()
     */
 
     //challenge la somme des N entier
-    int N,i,S=0;
+    /*int N,i,S=0;
     printf("enter un nombre :");
     scanf("%d",&N);
     for(i=0;i<=N;i++){
         S+=i;
     }
     printf("la somme est : %d",S);
+    */
 
 
+    //dicimal en binaire
+    int N,i,dev,reste;
+
+    do{
+        div=N%2;
+
+    }while(N!=0);
 
 
 
