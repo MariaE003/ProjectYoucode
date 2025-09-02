@@ -1,5 +1,9 @@
 # depslib dependency file v1.0
-1756806593 source:c:\users\ycode\projectyoucode\myproject\main.c
+1756823161 source:c:\users\ycode\projectyoucode\myproject\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1756820409 source:c:\users\ycode\projectyoucode\myproject\challenge 1.c
 	<stdio.h>
 	<stdlib.h>
 

@@ -66,10 +66,42 @@ int main()
 
     */
 
-    //challenge 6
-    int N,i;
+    //challenge 7
+    /*int inverse,N;
     printf("entrer un nombre :");
     scanf("%d",&N);
+    do{
+        inverse=(N%10)+(inverse*10);
+        N=N/10;
+
+    }while(N!=0);
+    printf("%d",inverse);
+    */
+
+
+    //compteur
+    /*int N,i,mode,count;
+    printf("entrer un nombre :");
+    scanf("%d",&N);
+
+    while(N!=0){
+        mode=N%10;
+        N=N/10;
+        count++;
+    }
+    printf("le nombre qui compose se nombre est : %d",count);
+
+    */
+
+    //challenge la somme des N entier
+    int N,i,S=0;
+    printf("enter un nombre :");
+    scanf("%d",&N);
+    for(i=0;i<=N;i++){
+        S+=i;
+    }
+    printf("la somme est : %d",S);
+
 
 
 
