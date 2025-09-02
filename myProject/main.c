@@ -37,19 +37,6 @@ int main()
     */
     //challenge 13
 
-    int nbr,a,b,reste;
-    printf("entrer un entier : ");
-    scanf("%d",&nbr);
-    do{
-        a=nbr/2;
-        reste=(nbr%2)+(reste*10);
-        b=a/2;
-        printf("%d\n",a);
-        reste=(nbr%2)+(reste*10);
-        printf("%d",reste);
-
-
-    }while(b!=0);
 
 
 
