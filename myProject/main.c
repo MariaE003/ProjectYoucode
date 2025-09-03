@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
+
 int main()
 {
 
@@ -105,12 +108,209 @@ int main()
 
 
     //dicimal en binaire
-    int N,i,dev,reste;
+   /* int N,i,dev,reste;
+    printf("enter un nombre :");
+    scanf("%d",&N);
 
     do{
-        div=N%2;
+        reste=N%2;
+        N=N/2;
+        printf("%d",reste);
 
     }while(N!=0);
+    */
+    //je dois fqire linverse
+
+    //les tableau
+    //challenge 1
+    /*int T[]={1, 2, 3, 4, 5},i;
+    for(i=0;i<5;i++){
+        printf("T[%d] = %d\n",i,T[i]);
+    }
+    */
+    //challenge 2
+    /*
+    int T[100],i,taille;
+    printf("entrer le nombre des element du tableau : \n");
+    scanf("%d",&taille);
+    printf("entrer les element du tableau : \n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = ",i+1);
+        scanf("%d",&T[i]);
+    }
+    printf("voici laffichage des element du tableau :\n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = %d\n",i+1,T[i]);
+    }
+    */
+    //Challenge 4 : Trouver le Maximum
+
+    /*
+    int T[100],i,taille,max;
+    printf("entrer le nombre des element du tableau : \n");
+    scanf("%d",&taille);
+    printf("entrer les element du tableau : \n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = ",i+1);
+        scanf("%d",&T[i]);
+    }
+    max=T[0];
+    for(i=0;i<taille;i++){
+        if(T[i]>max){
+            max=T[i];
+        }
+    }
+    printf("le maximum est : %d",max);
+*/
+
+    //chalenge
+/*
+    int T[100],i,taille,temp,j;
+    printf("entrer le nombre des element du tableau : \n");
+    scanf("%d",&taille);
+    printf("entrer les element du tableau : \n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = ",i+1);
+        scanf("%d",&T[i]);
+    }
+
+    for(i=0;i<taille;i++){
+            for(j=i+1;j<taille;j++){
+                if(T[i]>T[j]){
+                    temp=T[i];
+                    T[i]=T[j];
+                    T[j]=temp;
+                }
+            }
+
+    }
+    printf("voici les element en ordre croissant : ");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = %d\n",i+1,T[i]);
+    }
+    */
+
+    //copie d'un tableau
+    /*
+    int T[100],C[100],i,taille;
+
+    printf("entrer le nombre des element du tableau : \n");
+    scanf("%d",&taille);
+
+    printf("entrer les element du tableau : \n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = ",i+1);
+        scanf("%d",&T[i]);
+    }
+    for(i=0;i<taille;i++){
+       C[i]=T[i];
+    }
+    //le tableau origin
+    printf("le tableau origin \n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = %d \n",i+1,T[i]);
+    }
+    //la tableau copie
+    printf("la tableau copie \n");
+    for(i=0;i<taille;i++){
+        printf("C[%d] = %d",i+1,C[i]);
+    }
+*/
+
+    //exercice
+/*
+    float P=125,NT=0,i,x1;
+    int NombreP;
+    printf("entrer les nombre de produiut : ");
+    scanf("%d",&NombreP);
+    int j=0;
+    for(i=0;i<NombreP;i++){
+            NT=NT+P-(P*j/100);
+            j+=2;
+
+    }
+    printf("le prix totale est : %f",NT);
+*/
+
+    //Challenge 9 : Inversion d'un Tableau
+
+    /*
+    int T[]={1,2,3,4,5},i,j,In[100];
+    int length = sizeof(T) / sizeof(T[0]);
+    printf("taille du t est : %d\n",length);
+
+    for(i=0;i<length;i++){
+            In[i]=T[length-i-1];
+    }
+
+    for(i=0;i<5;i++){
+        printf("%d ",In[i]);
+    }
+    */
+
+    //Challenge 10 : Rechercher un Élément
+    /*
+    int T[100],C[100],i,taille,elementR,setrouve=0;
+
+    printf("entrer le nombre des element du tableau : \n");
+    scanf("%d",&taille);
+
+    printf("entrer les element du tableau : \n");
+    for(i=0;i<taille;i++){
+        printf("T[%d] = ",i+1);
+        scanf("%d",&T[i]);
+    }
+    printf("entrer un nombre a chercher .");
+    scanf("%d",&elementR);
+    for(i=0;i<taille;i++){
+        if(elementR==T[i]){
+                setrouve=1;
+        }
+    }
+    if(setrouve){
+        printf("lelement est dans le tableau .");
+    }else{
+            printf("lelement n'est pas dans le tableau .");
+    }
+    */
+
+
+
+    char titre[10][100],auteur[10][100],reponse;
+    int quantite[100],i=0,Combien;
+    float prix[100];
+
+    printf("tu veux ajouter un livre ? y/n :");
+    scanf("%c",&reponse);
+    printf("combien des livre vous vouler ajouter ? :");
+    scanf("%d",&Combien);
+    while(reponse == 'y' && i<Combien){
+
+        printf("entrer le titre du livre :");
+        scanf("%s",&titre[i]);
+
+        printf("entrer auteur du livre :");
+        scanf("%s",&auteur[i]);
+
+        printf("entrer quantite du livre :");
+        scanf("%s",&quantite[i]);
+
+        printf("entrer le prix du livre :");
+        scanf("%s",&prix[i]);
+
+
+
+        printf("tu veux ajouter un livre ? y/n");
+        scanf("%c",&reponse);
+    i++;
+    }
+    for(i=0;i<Combien;i++){
+        printf("%s",titre[i]);
+    }
+
+
+
+
 
 
 
