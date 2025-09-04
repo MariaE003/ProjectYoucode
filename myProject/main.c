@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
+#include <ctype.h>
 
 
 
@@ -275,38 +276,83 @@ int main()
     */
 
 
-
-    char titre[10][100],auteur[10][100],reponse;
-    int quantite[100],i=0,Combien;
+    int quantite[100],combien=0,i=0;
     float prix[100];
-
-    printf("tu veux ajouter un livre ? y/n :");
-    scanf("%c",&reponse);
-    printf("combien des livre vous vouler ajouter ? :");
-    scanf("%d",&Combien);
-    while(reponse == 'y' && i<Combien){
-
+    char titre[10][100],auteur[10][100];
+    printf("combien de livre vous pouvez ajouter : ");
+    scanf("%d",&combien);
+    while(i<combien){
+        printf("entrer le livre N * %d livre\n",i+1);
         printf("entrer le titre du livre :");
-        scanf("%s",&titre[i]);
+        scanf("%s",titre[i]);
 
-        printf("entrer auteur du livre :");
-        scanf("%s",&auteur[i]);
-
-        printf("entrer quantite du livre :");
-        scanf("%s",&quantite[i]);
+        printf("entrer le auteur du livre :");
+        scanf("%s",auteur[i]);
 
         printf("entrer le prix du livre :");
-        scanf("%s",&prix[i]);
+        scanf("%f",&prix[i]);
 
+        printf("entrer la quantite du livre :");
+        scanf("%d",&quantite[i]);
 
+        i++;
 
-        printf("tu veux ajouter un livre ? y/n");
-        scanf("%c",&reponse);
-    i++;
     }
-    for(i=0;i<Combien;i++){
-        printf("%s",titre[i]);
+    //int length=sizeof(prix)/sizeof(prix[0]);
+    printf("voici tous les livres :\n");
+    for(i=0;i<combien;i++){
+        printf("%s -- %s -- %.2f -- %d \n",titre[i],auteur[i],prix[i],quantite[i]);
     }
+
+    char livreAmodifier[10];
+    printf("quelle livre  tu veux modifier entrer le nom du livre : ");
+    scanf("%s",livreAmodifier);
+    for(i=0;i<strlen(livreAmodifier);i++){
+        if(isupper(livreAmodifier[i])){
+        livreAmodifier[i]=tolower(livreAmodifier[i]);
+        //printf("%s",livreAmodifier[i]);
+    }
+    }
+
+
+    for(i=0;i<combien;i++){
+        //strcmp return 0 si les deux valeur sont egale sinon ...
+        if(strcmp(livreAmodifier, titre[i]) == 0){
+
+            printf("entrer la nouvelle quantite: ");
+            scanf("%d",&quantite[i]);
+            break;
+
+        }
+    }
+
+
+    printf("voici tous les livres apres le metre a jour:\n");
+
+    for(i=0;i<combien;i++){
+        printf("%s -- %s -- %.2f -- %d \n",titre[i],auteur[i],prix[i],quantite[i]);
+    }
+    //supp
+    /*char livreAsupprimer[100];
+    char P;
+    printf("quelle livre tu veux supprimer mentrer le nom du livre ? :");
+    scanf("%s",&livreAsupprimer);
+    if(strcmp(livreAmodifier,titre[i])==0){
+        P=titre[livreAmodifier];
+        printf("%d",P);
+        /*for(i=;i<combien;i++){
+            titre[li]
+        }
+    }*/
+
+    int count;
+    for(i=0;i<combien;i++){
+        count+=quantite[i];
+    }
+    printf("le nombre total de livres en stock est : %d",count);
+
+
+
 
 
 
