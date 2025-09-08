@@ -37,19 +37,19 @@ void calculeAir(float lar,float longe){
 //mini-p 2
 typedef struct Contact{
             char nom[100];
-            int numero_de_telephone;
+            char numero_de_telephone[100];
             char adresse_e_mail[100];
         }contact;
 
 
-void Search(contact contacts[],int taille,char contact1[100]){
+int Search(contact contacts[],int taille,char contact1[100]){
     for(int i=0;i<taille;i++){
         if(strcasecmp(contacts[i].nom,contact1)==0){
-            printf("nom : %s - numero_de_telephone : %d - adresse_e_mail : %s\n",contacts[i].nom,contacts[i].numero_de_telephone,contacts[i].adresse_e_mail);
-        }else{
-            printf("votre contact est introvable.");
+                return i;
+            //printf("nom : %s - numero_de_telephone : %s - adresse_e_mail : %s\n",contacts[i].nom,contacts[i].numero_de_telephone,contacts[i].adresse_e_mail);
         }
     }
+    return -1;
 }
 
 int main()
@@ -696,53 +696,111 @@ int main()
         int choix;
         int cmp=0;
         contact contacts[10];
+        int index=0;
 
         do{
-            printf("-------menu---------\n");
-            printf("1 Ajouter un Contact.\n");
-            printf("2 Modifier un Contact.\n");
-            printf("3 Supprimer un Contact.\n");
-            printf("4 Afficher Tous les Contacts.\n");
-            printf("5 Rechercher un Contact\n");
+            printf("\n -------menu--------- \n");
+            printf("1 - Ajouter un Contact.\n");
+            printf("2 - Modifier un Contact.\n");
+            printf("3 - Supprimer un Contact.\n");
+            printf("4 - Afficher Tous les Contacts.\n");
+            printf("5 - Rechercher un Contact\n");
+
 
             scanf("%d",&choix);
+            getchar();
 
             switch(choix){
                 case 1:
+
                     // question combien ...
                     printf("entrer le Nom : \n");
-                    getchar();
-                    //fgets(contact[cmp].nom,strlen(contact.nom),stdin);
-                    fgets(contacts[cmp].nom, sizeof(contacts[cmp].nom), stdin);
+                    fgets(contacts[cmp].nom, 100, stdin);
+                    //contact]s.nom[strlen(contacts.nom)-1]='\0';
+
+                    //contacts[cmp].nom[strcspn(contacts[cmp].nom, "\n")] = '\0';
+                    //getchar();
+
 
                     printf("entrer le numero_de_telephone : \n");
-                    getchar();
-                    scanf("%d",&contacts[cmp].numero_de_telephone);
+
+                    fgets(contacts[cmp].numero_de_telephone, 100, stdin);
+                   // contacts[cmp].numero_de_telephone[strcspn(contacts[cmp].numero_de_telephone, "\n")] = '\0';
+                    //getchar();
 
                     printf("entrer l'adresse_e_mail : \n");
-                    getchar();
-                    fgets(contacts[cmp].adresse_e_mail,sizeof(contacts[cmp].adresse_e_mail),stdin);
+
+                    fgets(contacts[cmp].adresse_e_mail,100,stdin);
+                    //contacts[cmp].adresse_e_mail[strcspn(contacts[cmp].adresse_e_mail,"\n")]='\0';
+                    //getchar();
 
                     cmp++;
                     break;
                 case 2:
+                    char contact_a_modifier[100];
+
+
+                    printf("entrer le nom du contact que vous voulew modifier : ");
+                    //getchar();
+                    fgets(contact_a_modifier,sizeof(contact_a_modifier),stdin);
+                    //contact_a_modifier[strcspn(contact_a_modifier, "\n")] = '\0';
+
+                    index=Search(contacts,cmp,contact_a_modifier);
+
+                    if(index!=-1){
+                        printf("entrer la nouvelle valeur pour numero_de_telephone :");
+                        scanf("%s",&contacts[index].numero_de_telephone);
+
+
+                        printf("entrer la nouvelle valeur pour adresse_e_mail :");
+                        scanf("%s",&contacts[index].adresse_e_mail);
+
+                        printf("le contact est modifier avce succes.\n");
+
+                    }
+
                     break;
-                case 3:
+                case 3: //la supprision
+                    char contact_a_supprimer[100];
+                    printf("entrer le contact que vous voulez supprimer :");
+                    //getchar();
+                    fgets(contact_a_supprimer,sizeof(contact_a_supprimer),stdin);
+
+                    index=Search(contacts,cmp,contact_a_supprimer);
+                    printf("%d",index);
+                    if(index != -1){
+                        for(int i=index;i<cmp;i++){
+                                contacts[i]=contacts[i+1];
+
+
+                        }
+                        cmp--;
+                        printf("la supprission fait avec succes.\n");
+                    }
+
                     break;
                 case 4:
+                    printf("voici tous les contacts :\n");
                     for(int i=0;i<cmp;i++){
-                        printf("nom : %s - numero_de_telephone : %d - adresse_e_mail : %s\n",contacts[i].nom,contacts[i].numero_de_telephone,contacts[i].adresse_e_mail);
+                        printf("nom : %s - numero_de_telephone : %s - adresse_e_mail : %s \n",contacts[i].nom,contacts[i].numero_de_telephone,contacts[i].adresse_e_mail);
                     }
                     break;
                 case 5:
                     char search[100];
+
                     printf("entrer le nom du contact :");
-                    getchar();
                     fgets(search,sizeof(search),stdin);
-                    Search(contacts,cmp,search);
+                    //search[strcspn(search, "\n")] = '\0';
+
+                    index=Search(contacts,cmp,search);
+                    if(index==-1){
+                        printf("votre contact est introvable.\n");
+                    }else{
+                        printf("nom : %s - numero_de_telephone : %s - adresse_e_mail : %s\n",contacts[index].nom,contacts[index].numero_de_telephone,contacts[index].adresse_e_mail);
+                    }
                     break;
                 default:
-                    printf("entrer un choix valide.");
+                    printf("entrer un choix valide.\n");
                     break;
 
             }
@@ -751,7 +809,8 @@ int main()
 
 
 
-            printf("vous voulez continuer ? y/n :");
+            printf("vous voulez continuer ? y/n :\n");
+            getchar();
             scanf("%c",&reponse);
         }while(reponse != 'n');
 
