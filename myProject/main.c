@@ -4,6 +4,8 @@
 #include <ctype.h>
 #define MAX_BOOKS 100
 
+
+//chalenges des fonction
 int Fibonacci(int N){
     int U0,U1,U;
     U0=0;
@@ -27,14 +29,32 @@ int PaireImpaire(int N){
 }
 
 
+void calculeAir(float lar,float longe){
+    printf("laire de cette rectangle est : %.2f ",lar*longe);
+}
+
+
+//mini-p 2
+typedef struct Contact{
+            char nom[100];
+            int numero_de_telephone;
+            char adresse_e_mail[100];
+        }contact;
+
+
+void Search(contact contacts[],int taille,char contact1[100]){
+    for(int i=0;i<taille;i++){
+        if(strcasecmp(contacts[i].nom,contact1)==0){
+            printf("nom : %s - numero_de_telephone : %d - adresse_e_mail : %s\n",contacts[i].nom,contacts[i].numero_de_telephone,contacts[i].adresse_e_mail);
+        }else{
+            printf("votre contact est introvable.");
+        }
+    }
+}
 
 int main()
 {
-
-
-
-
-    //challenge 11
+     //challenge 11
     /*float  longueur , largeur,surface;
     printf("entrer la longueur : ");
     scanf("%f",&longueur);
@@ -299,7 +319,12 @@ int main()
     */
 
 
+
+
+
+    //le mini-projet
     /*
+<<<<<<< HEAD
     int quantite[100],combien=0,i=0;
     float prix[100];
     char titre[10][100],auteur[10][100];
@@ -419,12 +444,13 @@ int main()
         printf("vous voulez continuer ? y/n");
         scanf(" %c", &reponse_y_n);
 
-
     }while(reponse_y_n != 0);
 
     */
 
-     //les challenges du functions
+
+
+    //les challenges du functions
     //chalenge 6 fonction du fibonacci
     /*int N;
     printf("entrer un entier :");
@@ -527,7 +553,215 @@ int main()
 
 
 
+    //les chalenge de string
+    //challenge 1
+    /*
+    char chaine1[100];
+    printf("entrer une chaine :");
+    gets(chaine1);
+    printf("voici la chaine");
+    puts(chaine1);
+    */
 
+    //challenge2
+
+    /*
+    char chaine[100];
+    int count=0;
+    printf("entrer une chaine de caracter :");
+    gets(chaine);
+    for(int i=0;chaine[i]!='\0';i++){
+        count++;
+    }
+    printf("le size du chaine est : %d",count);
+
+    */
+
+    //challenge 3
+    /*char chaine1[100],chaine2[100];
+    printf("entrer le premier chaine :");
+    gets(chaine1);
+    printf("entrer le deuxieme chaine :");
+    gets(chaine2);
+
+    printf("%s ",strcat(chaine1,chaine2));
+*/
+
+    //Challenge 4 : Comparaison de Chaînes
+    /*
+    char chaine1[100],chaine2[100];
+    printf("entrer le premier chaine :");
+    gets(chaine1);
+    printf("entrer le deuxieme chaine :");
+    gets(chaine2);
+    if(strcmp(chaine1,chaine2)==0){
+        printf("les chaine1 %s, et chaine2 %s sont egaux",chaine1,chaine2);
+    }else{
+        printf("les chaines ne sont pas egales.");
+    }
+    */
+
+
+    /*//Challenge 5 : Inversion de Chaîne
+
+    char chaine[100];
+    printf("entre une chaine : ");
+    gets(chaine);
+    for(int i=strlen(chaine)-1 ; i>=0 ; i--){
+        printf("%c",chaine[i]);
+    }
+
+    */
+    //Challenge 6 : Compte des Occurrences d'un Caractère
+    /*
+    char chaine[100],C,count=0;
+    printf("entre une chaine : ");
+    gets(chaine);
+    printf("entre un caractere : ");
+    scanf("%c",&C);
+    for(int i=0;i<strlen(chaine);i++){
+        if(chaine[i]==C){
+            count++;
+        }
+    }
+    printf("le nombre de occurance du caractere %c dans la chaine %s est : %d",C,chaine,count);
+
+    */
+
+    //Challenge 9 : Suppression des Espaces
+
+
+    // Challenge 10 : Trouver un Sous-String
+
+
+
+
+
+    //Challenges du struct
+        //Challenge 1 : Définition et Utilisation de Structure
+
+        /*
+        typedef struct Personne{
+            char nom[100];
+            char prenom[100];
+            int age;
+        }pers;
+        struct Personne P1={"elg","maria",22};
+        pers P2={"elgotby","fati",19};
+
+        printf("nom - %s / prenom - %s / age - %d",P1.nom,P1.prenom,P1.age);
+        printf("\nnom - %s / prenom - %s / age - %d",P2.nom,P2.prenom,P2.age);
+        */
+        //Challenge 2 : Structure avec Tableau
+
+        /*
+        typedef struct Etudiant{
+        char nom[100];
+        char prenom[100];
+        int notes[100];
+        }etud;
+        etud E1={"elgotby","maria",{1,2,3,4}};
+        printf("nom - %s / prenom - %s ",E1.nom,E1.prenom);
+        for(int i=0;i<4;i++)
+        {
+            printf(" notes[%d] - %d ",i,E1.notes[i]);
+        }
+        */
+        //Challenge 3 : Passage de Structure en Argument
+        /*
+        typedef struct rectangle{
+            float largeur;
+            float longueur;
+        }rec;
+        rec rectangle1={12.3,2.5};
+        calculeAir(rectangle1.largeur,rectangle1.longueur);
+        */
+
+
+
+
+
+
+        //mini-projet 2
+
+        /*
+        typedef struct Contact{
+            char nom[100];
+            int numero_de_telephone;
+            char adresse_e_mail[100];
+        }contact;
+*/
+
+        char reponse;
+        int choix;
+        int cmp=0;
+        contact contacts[10];
+
+        do{
+            printf("-------menu---------\n");
+            printf("1 Ajouter un Contact.\n");
+            printf("2 Modifier un Contact.\n");
+            printf("3 Supprimer un Contact.\n");
+            printf("4 Afficher Tous les Contacts.\n");
+            printf("5 Rechercher un Contact\n");
+
+            scanf("%d",&choix);
+
+            switch(choix){
+                case 1:
+                    // question combien ...
+                    printf("entrer le Nom : \n");
+                    getchar();
+                    //fgets(contact[cmp].nom,strlen(contact.nom),stdin);
+                    fgets(contacts[cmp].nom, sizeof(contacts[cmp].nom), stdin);
+
+                    printf("entrer le numero_de_telephone : \n");
+                    getchar();
+                    scanf("%d",&contacts[cmp].numero_de_telephone);
+
+                    printf("entrer l'adresse_e_mail : \n");
+                    getchar();
+                    fgets(contacts[cmp].adresse_e_mail,sizeof(contacts[cmp].adresse_e_mail),stdin);
+
+                    cmp++;
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    for(int i=0;i<cmp;i++){
+                        printf("nom : %s - numero_de_telephone : %d - adresse_e_mail : %s\n",contacts[i].nom,contacts[i].numero_de_telephone,contacts[i].adresse_e_mail);
+                    }
+                    break;
+                case 5:
+                    char search[100];
+                    printf("entrer le nom du contact :");
+                    getchar();
+                    fgets(search,sizeof(search),stdin);
+                    Search(contacts,cmp,search);
+                    break;
+                default:
+                    printf("entrer un choix valide.");
+                    break;
+
+            }
+
+
+
+
+
+            printf("vous voulez continuer ? y/n :");
+            scanf("%c",&reponse);
+        }while(reponse != 'n');
 
     return 0;
+
 }
+
+
+
+
+
+
+
