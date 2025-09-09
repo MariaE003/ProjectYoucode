@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #define MAX_BOOKS 100
+#include <stdbool.h>
 
 
 //chalenges des fonction
@@ -50,6 +51,53 @@ int Search(contact contacts[],int taille,char contact1[100]){
         }
     }
     return -1;
+}
+
+//
+void triSelection(int T[],int taille){
+    int index_i=0;
+    int temp=0;
+    for(int i=0;i<taille-1;i++){
+        index_i=i;//stocker lindece du 1ere element du tab
+        for(int j=i+1;j<taille;j++){
+            if(T[j]<T[index_i]){
+                index_i=j;
+            }
+        }
+        if(index_i !=i){
+        temp=T[i];
+        T[i]=T[index_i];
+        T[index_i]=temp;
+        }
+    }
+    /*for(int i=0;i<taille;i++){
+        printf(" / %d /",T[i]);
+    }*/
+}
+int partition(int T[],int bas, int haut){
+    int pivot=T[haut];
+    int i=(bas-1);
+    int temp;
+    for(int j=bas;j<haut;j++){
+        if(T[j]<=pivot){
+            i++;
+            temp=T[i];
+            T[i]=T[j];
+            T[j]=temp;
+
+        }
+    }
+    temp=T[i+1];
+    T[i+1]=T[haut];
+    T[haut]=temp;
+    return(i+1);
+}
+void triRapide(int T[],int bas,int haut){
+    if(bas<haut){
+        int pi=partition(T,bas,haut);
+        triRapide(T,bas,pi-1);
+        triRapide(T,pi+1,haut);
+    }
 }
 
 int main()
@@ -691,7 +739,7 @@ int main()
             char adresse_e_mail[100];
         }contact;
 */
-
+/*
         char reponse;
         int choix;
         int cmp=0;
@@ -718,20 +766,20 @@ int main()
                     fgets(contacts[cmp].nom, 100, stdin);
                     //contact]s.nom[strlen(contacts.nom)-1]='\0';
 
-                    //contacts[cmp].nom[strcspn(contacts[cmp].nom, "\n")] = '\0';
+                    contacts[cmp].nom[strcspn(contacts[cmp].nom, "\n")] = '\0';
                     //getchar();
 
 
                     printf("entrer le numero_de_telephone : \n");
 
                     fgets(contacts[cmp].numero_de_telephone, 100, stdin);
-                   // contacts[cmp].numero_de_telephone[strcspn(contacts[cmp].numero_de_telephone, "\n")] = '\0';
+                   contacts[cmp].numero_de_telephone[strcspn(contacts[cmp].numero_de_telephone, "\n")] = '\0';
                     //getchar();
 
                     printf("entrer l'adresse_e_mail : \n");
 
                     fgets(contacts[cmp].adresse_e_mail,100,stdin);
-                    //contacts[cmp].adresse_e_mail[strcspn(contacts[cmp].adresse_e_mail,"\n")]='\0';
+                    contacts[cmp].adresse_e_mail[strcspn(contacts[cmp].adresse_e_mail,"\n")]='\0';
                     //getchar();
 
                     cmp++;
@@ -771,8 +819,6 @@ int main()
                     if(index != -1){
                         for(int i=index;i<cmp;i++){
                                 contacts[i]=contacts[i+1];
-
-
                         }
                         cmp--;
                         printf("la supprission fait avec succes.\n");
@@ -806,13 +852,50 @@ int main()
             }
 
 
-
-
-
             printf("vous voulez continuer ? y/n :\n");
             getchar();
             scanf("%c",&reponse);
         }while(reponse != 'n');
+
+
+    */
+
+
+
+        //Challenge 3 : Tri par Sélection
+
+        /*
+        int T[8]={1,6,-2,44,12,2,7,-22};
+        int taille=sizeof(T)/sizeof(T[0]);
+
+        for(int i=0;i<taille;i++){
+            printf("* %d *",T[i]);
+        }
+        printf(" **** \n");
+        triSelection(T,taille);
+        for(int i=0;i<taille;i++){
+            printf(" / %d /",T[i]);
+        }
+
+
+        bool isMerror;
+        int T[]={1,2,3,4};
+
+        int taille=sizeof(T)/sizeof();
+        */
+
+        int T[8]={1,6,-2,44,12,2,7,-22};
+        int taille=sizeof(T)/sizeof(T[0]);
+
+        for(int i=0;i<taille;i++){
+            printf("* %d *",T[i]);
+        }
+
+        printf(" **** \n");
+        triRapide(T,0,taille-1);
+        for(int i=0;i<taille;i++){
+            printf(" / %d /",T[i]);
+        }
 
     return 0;
 
